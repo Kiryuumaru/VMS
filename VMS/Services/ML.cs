@@ -45,6 +45,18 @@ namespace VMS.Services
 
             IsClassifyReady = false;
 
+            if (!File.Exists(Model))
+            {
+                log.Invoke("ML: Inception Model: Not ready");
+                log.Invoke("ML: Extracting inception model . . .");
+                Directory.CreateDirectory(AssetsDir);
+                File.WriteAllBytes(Model, Properties.Resources.model);
+            }
+            else
+            {
+                log.Invoke("ML: Inception Model: Ready");
+            }
+
             mlContext = new MLContext();
 
             try
@@ -56,12 +68,14 @@ namespace VMS.Services
 
             if (IsClassifyReady)
             {
-                log.Invoke("ML: Done");
+                log.Invoke("ML: Transfer Model: Ready");
             }
             else
             {
-                log.Invoke("ML: Transfer model is not ready");
+                log.Invoke("ML: Transfer Model: Not ready");
             }
+
+            log.Invoke("ML: Done");
 
             running = false;
         }
@@ -93,7 +107,7 @@ namespace VMS.Services
 
             IsClassifyReady = false;
 
-            log.Invoke("ML: Generating model . . .");
+            log.Invoke("ML: Generating transfer model . . .");
 
             if (!Directory.Exists(ImagesDir)) Directory.CreateDirectory(ImagesDir);
 
@@ -138,7 +152,7 @@ namespace VMS.Services
             }
             else
             {
-                log.Invoke("ML: Base model not found . . .");
+                log.Invoke("ML: Inception Model: not ready . . .");
             }
 
             running = false;

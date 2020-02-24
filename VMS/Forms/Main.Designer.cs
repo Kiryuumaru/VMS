@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.buttonClassify = new System.Windows.Forms.Button();
-            this.buttonOpenFile = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBoxFile = new System.Windows.Forms.TextBox();
             this.buttonTrain = new System.Windows.Forms.Button();
-            this.textBoxlog = new System.Windows.Forms.TextBox();
-            this.buttonClearLog = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -43,51 +41,22 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "MP4 Files|*.mp4";
             // 
-            // buttonClassify
-            // 
-            this.buttonClassify.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonClassify.Location = new System.Drawing.Point(479, 318);
-            this.buttonClassify.Name = "buttonClassify";
-            this.buttonClassify.Size = new System.Drawing.Size(108, 33);
-            this.buttonClassify.TabIndex = 8;
-            this.buttonClassify.Text = "Start Process";
-            this.buttonClassify.UseVisualStyleBackColor = true;
-            this.buttonClassify.Click += new System.EventHandler(this.ButtonClassify_Click);
-            // 
-            // buttonOpenFile
-            // 
-            this.buttonOpenFile.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonOpenFile.Location = new System.Drawing.Point(390, 318);
-            this.buttonOpenFile.Name = "buttonOpenFile";
-            this.buttonOpenFile.Size = new System.Drawing.Size(83, 33);
-            this.buttonOpenFile.TabIndex = 7;
-            this.buttonOpenFile.Text = "Open File";
-            this.buttonOpenFile.UseVisualStyleBackColor = true;
-            this.buttonOpenFile.Click += new System.EventHandler(this.ButtonOpenFile_Click);
-            // 
             // label2
             // 
-            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(184, 7);
+            this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(295, 37);
+            this.label2.Size = new System.Drawing.Size(687, 361);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Classifying and Sizing";
-            // 
-            // textBoxFile
-            // 
-            this.textBoxFile.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxFile.Location = new System.Drawing.Point(16, 323);
-            this.textBoxFile.Multiline = true;
-            this.textBoxFile.Name = "textBoxFile";
-            this.textBoxFile.Size = new System.Drawing.Size(368, 26);
-            this.textBoxFile.TabIndex = 9;
+            this.label2.Text = "VISITOR MANAGEMENT SYSTEM";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonTrain
             // 
+            this.buttonTrain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonTrain.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTrain.Location = new System.Drawing.Point(593, 318);
+            this.buttonTrain.Location = new System.Drawing.Point(597, 316);
             this.buttonTrain.Name = "buttonTrain";
             this.buttonTrain.Size = new System.Drawing.Size(78, 33);
             this.buttonTrain.TabIndex = 10;
@@ -95,48 +64,36 @@
             this.buttonTrain.UseVisualStyleBackColor = true;
             this.buttonTrain.Click += new System.EventHandler(this.ButtonTrain_Click);
             // 
-            // textBoxlog
+            // pictureBox1
             // 
-            this.textBoxlog.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxlog.Location = new System.Drawing.Point(16, 49);
-            this.textBoxlog.Multiline = true;
-            this.textBoxlog.Name = "textBoxlog";
-            this.textBoxlog.ReadOnly = true;
-            this.textBoxlog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxlog.Size = new System.Drawing.Size(655, 260);
-            this.textBoxlog.TabIndex = 11;
-            // 
-            // buttonClearLog
-            // 
-            this.buttonClearLog.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonClearLog.Location = new System.Drawing.Point(593, 16);
-            this.buttonClearLog.Name = "buttonClearLog";
-            this.buttonClearLog.Size = new System.Drawing.Size(78, 33);
-            this.buttonClearLog.TabIndex = 12;
-            this.buttonClearLog.Text = "Clear Log";
-            this.buttonClearLog.UseVisualStyleBackColor = true;
-            this.buttonClearLog.Click += new System.EventHandler(this.ButtonClearLog_Click);
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(687, 97);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(687, 361);
-            this.Controls.Add(this.buttonClearLog);
-            this.Controls.Add(this.textBoxlog);
+            this.ControlBox = false;
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonTrain);
-            this.Controls.Add(this.buttonClassify);
-            this.Controls.Add(this.buttonOpenFile);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBoxFile);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "Main";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Isda Best";
-            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Main_DragDrop);
-            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Main_DragEnter);
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,12 +101,8 @@
 
         #endregion
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button buttonClassify;
-        private System.Windows.Forms.Button buttonOpenFile;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBoxFile;
         private System.Windows.Forms.Button buttonTrain;
-        private System.Windows.Forms.TextBox textBoxlog;
-        private System.Windows.Forms.Button buttonClearLog;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -29,24 +29,24 @@ namespace VMS.Forms
 
         private void Log(string line)
         {
-            line = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") + " " + line;
-            try
-            {
-                if (!string.IsNullOrEmpty(textBoxlog.Text)) textBoxlog.AppendText(Environment.NewLine);
-                textBoxlog.AppendText(line);
-            }
-            catch
-            {
-                try
-                {
-                    Invoke(new MethodInvoker(delegate
-                    {
-                        if (!string.IsNullOrEmpty(textBoxlog.Text)) textBoxlog.AppendText(Environment.NewLine);
-                        textBoxlog.AppendText(line);
-                    }));
-                }
-                catch { }
-            }
+            //line = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") + " " + line;
+            //try
+            //{
+            //    if (!string.IsNullOrEmpty(textBoxlog.Text)) textBoxlog.AppendText(Environment.NewLine);
+            //    textBoxlog.AppendText(line);
+            //}
+            //catch
+            //{
+            //    try
+            //    {
+            //        Invoke(new MethodInvoker(delegate
+            //        {
+            //            if (!string.IsNullOrEmpty(textBoxlog.Text)) textBoxlog.AppendText(Environment.NewLine);
+            //            textBoxlog.AppendText(line);
+            //        }));
+            //    }
+            //    catch { }
+            //}
         }
 
         private void ButtonTrain_Click(object sender, EventArgs e)
@@ -88,30 +88,6 @@ namespace VMS.Forms
             {
                 e.Effect = DragDropEffects.None;
             }
-        }
-
-        private void Main_DragDrop(object sender, DragEventArgs e)
-        {
-            if (validData)
-            {
-                textBoxFile.Text = path;
-            }
-        }
-
-        private void ButtonOpenFile_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.ShowDialog();
-            textBoxFile.Text = openFileDialog1.FileName;
-        }
-
-        private void ButtonClassify_Click(object sender, EventArgs e)
-        {
-            Log("ML: Classifying");
-        }
-
-        private void ButtonClearLog_Click(object sender, EventArgs e)
-        {
-            textBoxlog.Text = "";
         }
     }
 }
