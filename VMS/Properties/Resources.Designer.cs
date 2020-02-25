@@ -63,9 +63,202 @@ namespace VMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] model {
+        internal static byte[] cv110 {
             get {
-                object obj = ResourceManager.GetObject("model", resourceCulture);
+                object obj = ResourceManager.GetObject("cv110", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] cvaux110 {
+            get {
+                object obj = ResourceManager.GetObject("cvaux110", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] cvextern {
+            get {
+                object obj = ResourceManager.GetObject("cvextern", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] cxcore110 {
+            get {
+                object obj = ResourceManager.GetObject("cxcore110", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
+        ///&lt;!--
+        ///    Stump-based 24x24 discrete(?) adaboost frontal face detector.
+        ///    Created by Rainer Lienhart.
+        ///
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        ///  IMPORTANT: READ BEFORE DOWNLOADING, COPYING, INSTALLING OR USING.
+        ///
+        ///  By downloading, copying, installing or using the software you agree to this license.
+        ///  If you do not agree to this license, do not download, install,
+        ///  copy or use the software.
+        ///
+        ///
+        ///                        Intel License Agreeme [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string haarcascade_frontalface_default {
+            get {
+                return ResourceManager.GetString("haarcascade_frontalface_default", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] highgui110 {
+            get {
+                object obj = ResourceManager.GetObject("highgui110", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] opencv_calib3d220 {
+            get {
+                object obj = ResourceManager.GetObject("opencv_calib3d220", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] opencv_contrib220 {
+            get {
+                object obj = ResourceManager.GetObject("opencv_contrib220", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] opencv_core220 {
+            get {
+                object obj = ResourceManager.GetObject("opencv_core220", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] opencv_features2d220 {
+            get {
+                object obj = ResourceManager.GetObject("opencv_features2d220", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] opencv_ffmpeg220 {
+            get {
+                object obj = ResourceManager.GetObject("opencv_ffmpeg220", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] opencv_flann220 {
+            get {
+                object obj = ResourceManager.GetObject("opencv_flann220", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] opencv_gpu220 {
+            get {
+                object obj = ResourceManager.GetObject("opencv_gpu220", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] opencv_highgui220 {
+            get {
+                object obj = ResourceManager.GetObject("opencv_highgui220", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] opencv_imgproc220 {
+            get {
+                object obj = ResourceManager.GetObject("opencv_imgproc220", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] opencv_legacy220 {
+            get {
+                object obj = ResourceManager.GetObject("opencv_legacy220", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] opencv_ml220 {
+            get {
+                object obj = ResourceManager.GetObject("opencv_ml220", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] opencv_objdetect220 {
+            get {
+                object obj = ResourceManager.GetObject("opencv_objdetect220", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] opencv_video220 {
+            get {
+                object obj = ResourceManager.GetObject("opencv_video220", resourceCulture);
                 return ((byte[])(obj));
             }
         }

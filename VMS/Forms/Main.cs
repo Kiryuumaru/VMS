@@ -14,80 +14,24 @@ namespace VMS.Forms
 {
     public partial class Main : Form
     {
-        private string path;
-        protected bool validData;
-
         public Main()
         {
             InitializeComponent();
-            AllowDrop = true;
-            Task.Run(delegate
-            {
-                ML.Init(Log);
-            });
         }
 
-        private void Log(string line)
+        private void ButtonNew_Click(object sender, EventArgs e)
         {
-            //line = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") + " " + line;
-            //try
-            //{
-            //    if (!string.IsNullOrEmpty(textBoxlog.Text)) textBoxlog.AppendText(Environment.NewLine);
-            //    textBoxlog.AppendText(line);
-            //}
-            //catch
-            //{
-            //    try
-            //    {
-            //        Invoke(new MethodInvoker(delegate
-            //        {
-            //            if (!string.IsNullOrEmpty(textBoxlog.Text)) textBoxlog.AppendText(Environment.NewLine);
-            //            textBoxlog.AppendText(line);
-            //        }));
-            //    }
-            //    catch { }
-            //}
+            new NewVisitor().ShowDialog();
         }
 
-        private void ButtonTrain_Click(object sender, EventArgs e)
+        private void ButtonOld_Click(object sender, EventArgs e)
         {
-            new Trainer(Log).Show();
+            new OldVisitor().ShowDialog();
         }
 
-        private bool GetFilename(out string filename, DragEventArgs e)
+        private void ButtonAdmin_Click(object sender, EventArgs e)
         {
-            bool ret = false;
-            filename = string.Empty;
-            if ((e.AllowedEffect & DragDropEffects.Copy) == DragDropEffects.Copy)
-            {
-                if (e.Data.GetData("FileDrop") is Array data)
-                {
-                    if ((data.Length == 1) && (data.GetValue(0) is string))
-                    {
-                        filename = ((string[])data)[0];
-                        string ext = Path.GetExtension(filename).ToLower();
-                        if (ext == ".mp4")
-                        {
-                            ret = true;
-                        }
-                    }
-                }
-            }
-            return ret;
-        }
-
-        private void Main_DragEnter(object sender, DragEventArgs e)
-        {
-            validData = GetFilename(out string filename, e);
-            if (validData)
-            {
-                path = filename;
-                e.Effect = DragDropEffects.Copy;
-            }
-            else
-            {
-                e.Effect = DragDropEffects.None;
-            }
+            new Admin().ShowDialog();
         }
     }
 }
