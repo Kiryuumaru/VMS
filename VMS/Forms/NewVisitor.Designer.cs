@@ -36,6 +36,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonScanBioRight = new System.Windows.Forms.Button();
+            this.labelFingerRight = new System.Windows.Forms.Label();
+            this.labelFingerLeft = new System.Windows.Forms.Label();
+            this.buttonScanBioLeft = new System.Windows.Forms.Button();
             this.comboBoxDestination = new System.Windows.Forms.ComboBox();
             this.comboBoxGender = new System.Windows.Forms.ComboBox();
             this.textboxContactNumber = new VMS.Controls.WaterMarkTextBox();
@@ -109,6 +113,10 @@
             // panel2
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel2.Controls.Add(this.buttonScanBioRight);
+            this.panel2.Controls.Add(this.labelFingerRight);
+            this.panel2.Controls.Add(this.labelFingerLeft);
+            this.panel2.Controls.Add(this.buttonScanBioLeft);
             this.panel2.Controls.Add(this.comboBoxDestination);
             this.panel2.Controls.Add(this.comboBoxGender);
             this.panel2.Controls.Add(this.textboxContactNumber);
@@ -118,6 +126,68 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(319, 375);
             this.panel2.TabIndex = 17;
+            // 
+            // buttonScanBioRight
+            // 
+            this.buttonScanBioRight.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonScanBioRight.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.buttonScanBioRight.FlatAppearance.BorderColor = System.Drawing.Color.Goldenrod;
+            this.buttonScanBioRight.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ControlLight;
+            this.buttonScanBioRight.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonScanBioRight.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.buttonScanBioRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonScanBioRight.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonScanBioRight.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.buttonScanBioRight.Location = new System.Drawing.Point(167, 337);
+            this.buttonScanBioRight.Margin = new System.Windows.Forms.Padding(8);
+            this.buttonScanBioRight.Name = "buttonScanBioRight";
+            this.buttonScanBioRight.Size = new System.Drawing.Size(144, 30);
+            this.buttonScanBioRight.TabIndex = 25;
+            this.buttonScanBioRight.Text = "SCAN RIGHT";
+            this.buttonScanBioRight.UseVisualStyleBackColor = false;
+            this.buttonScanBioRight.Click += new System.EventHandler(this.ButtonScanBioRight_Click);
+            // 
+            // labelFingerRight
+            // 
+            this.labelFingerRight.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFingerRight.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.labelFingerRight.Location = new System.Drawing.Point(163, 170);
+            this.labelFingerRight.Name = "labelFingerRight";
+            this.labelFingerRight.Size = new System.Drawing.Size(148, 159);
+            this.labelFingerRight.TabIndex = 24;
+            this.labelFingerRight.Text = "Right fingerprint not scanned";
+            this.labelFingerRight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelFingerLeft
+            // 
+            this.labelFingerLeft.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFingerLeft.ForeColor = System.Drawing.Color.DarkGray;
+            this.labelFingerLeft.Location = new System.Drawing.Point(8, 170);
+            this.labelFingerLeft.Name = "labelFingerLeft";
+            this.labelFingerLeft.Size = new System.Drawing.Size(148, 159);
+            this.labelFingerLeft.TabIndex = 23;
+            this.labelFingerLeft.Text = "Left fingerprint not scanned";
+            this.labelFingerLeft.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // buttonScanBioLeft
+            // 
+            this.buttonScanBioLeft.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonScanBioLeft.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.buttonScanBioLeft.FlatAppearance.BorderColor = System.Drawing.Color.Goldenrod;
+            this.buttonScanBioLeft.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ControlLight;
+            this.buttonScanBioLeft.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonScanBioLeft.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.buttonScanBioLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonScanBioLeft.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonScanBioLeft.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.buttonScanBioLeft.Location = new System.Drawing.Point(8, 337);
+            this.buttonScanBioLeft.Margin = new System.Windows.Forms.Padding(8);
+            this.buttonScanBioLeft.Name = "buttonScanBioLeft";
+            this.buttonScanBioLeft.Size = new System.Drawing.Size(148, 30);
+            this.buttonScanBioLeft.TabIndex = 22;
+            this.buttonScanBioLeft.Text = "SCAN LEFT";
+            this.buttonScanBioLeft.UseVisualStyleBackColor = false;
+            this.buttonScanBioLeft.Click += new System.EventHandler(this.ButtonScanBioLeft_Click);
             // 
             // comboBoxDestination
             // 
@@ -297,5 +367,9 @@
         private System.Windows.Forms.Button buttonRegister;
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Button buttonReset;
+        private System.Windows.Forms.Button buttonScanBioLeft;
+        private System.Windows.Forms.Label labelFingerRight;
+        private System.Windows.Forms.Label labelFingerLeft;
+        private System.Windows.Forms.Button buttonScanBioRight;
     }
 }

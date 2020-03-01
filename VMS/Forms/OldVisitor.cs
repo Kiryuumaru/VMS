@@ -15,6 +15,7 @@ namespace VMS.Forms
     public partial class OldVisitor : Form
     {
         private string userName = "";
+        private readonly User[] users = PartialDB.GetUsers();
 
         public OldVisitor()
         {
@@ -25,10 +26,15 @@ namespace VMS.Forms
             }
             comboBoxDestination.SelectedIndex = 0;
             StartCamera();
+            StartBiometric();
             ML.FaceRecognition.OnFaceRecognized = label =>
             {
-                labelGreetings.Text = "Welcome," + Environment.NewLine + label + "!";
-                userName = label;
+                User user = users.FirstOrDefault(item => item.Id.Equals(label));
+                if (user != null)
+                {
+                    labelGreetings.Text = "Welcome," + Environment.NewLine + user.Name + "!";
+                    userName = user.Name;
+                }
             };
             ML.FaceRecognition.ShowLabel = false;
         }
@@ -36,18 +42,30 @@ namespace VMS.Forms
         protected override void OnClosing(CancelEventArgs e)
         {
             ML.FaceRecognition.Stop();
+            Biometric.Standby();
             base.OnClosing(e);
         }
 
         private void StartCamera()
         {
-            Task.Run(delegate
+            ML.FaceRecognition.Init();
+            ML.FaceRecognition.Start(imageBoxFrameGrabber);
+        }
+
+        private void StartBiometric()
+        {
+            Biometric.Get(id =>
             {
-                ML.FaceRecognition.Init();
-                Invoke(new MethodInvoker(delegate
+                User user = users.FirstOrDefault(item => item.HasFingerId(Convert.ToInt32(id)));
+                if (user != null)
                 {
-                    ML.FaceRecognition.Start(imageBoxFrameGrabber);
-                }));
+                    Invoke(new MethodInvoker(delegate
+                    {
+                        labelGreetings.Text = "Welcome," + Environment.NewLine + user.Name + "!";
+                        userName = user.Name;
+                        StartBiometric();
+                    }));
+                }
             });
         }
 

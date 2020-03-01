@@ -10,12 +10,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Emgu.CV;
 using Emgu.CV.Structure;
+using System.Drawing;
 
 namespace VMS.Forms
 {
     public partial class NewVisitor : Form
     {
         private readonly List<Image<Gray, byte>> capturedImages = new List<Image<Gray, byte>>();
+        private readonly string nextId = Extension.Helpers.GenerateUID();
+
+        private int leftId = -1;
+        private int rightId = -1;
 
         public NewVisitor()
         {
@@ -40,14 +45,8 @@ namespace VMS.Forms
         private void StartCamera()
         {
             if (ML.FaceRecognition.Started) return;
-            Task.Run(delegate
-            {
-                ML.FaceRecognition.Init();
-                Invoke(new MethodInvoker(delegate
-                {
-                    ML.FaceRecognition.Start(imageBoxFrameGrabber);
-                }));
-            });
+            ML.FaceRecognition.Init();
+            ML.FaceRecognition.Start(imageBoxFrameGrabber);
         }
 
         private void ButtonCapture_Click(object sender, EventArgs e)
@@ -63,19 +62,20 @@ namespace VMS.Forms
                         ML.FaceRecognition.Stop();
                         Invoke(new MethodInvoker(delegate
                         {
-                            ((Button)sender).Text = "COMPLETE";
+                            labelIndicator.ForeColor = Color.Green;
                         }));
                     }
                     else
                     {
                         Invoke(new MethodInvoker(delegate
                         {
-                            ((Button)sender).Enabled = true;
+                            labelIndicator.ForeColor = Color.DarkGray;
                         }));
                     }
                     Invoke(new MethodInvoker(delegate
                     {
                         labelIndicator.Text = "Face straight to the camera (" + capturedImages.Count + "/3)";
+                        ((Button)sender).Enabled = true;
                     }));
                     MessageBox.Show("Face successfully detected", "Success", MessageBoxButtons.OK);
                 }
@@ -90,19 +90,107 @@ namespace VMS.Forms
             });
         }
 
+        private void ButtonScanBioLeft_Click(object sender, EventArgs e)
+        {
+            leftId = -1;
+            int id = PartialDB.GetNextLeftFingerprintId();
+            labelFingerLeft.Text = "Left fingerprint waiting to scan";
+            labelFingerLeft.ForeColor = Color.DarkGray;
+            Biometric.Set(id,
+                delegate
+                {
+                    Invoke(new MethodInvoker(delegate
+                    {
+                        labelFingerLeft.Text = "Left fingerprint waiting to confirm";
+                        labelFingerLeft.ForeColor = Color.DarkGray;
+                    }));
+                },
+                delegate
+                {
+                    leftId = id;
+                    Invoke(new MethodInvoker(delegate
+                    {
+                        labelFingerLeft.Text = "Left fingerprint scanned";
+                        labelFingerLeft.ForeColor = Color.Green;
+                    }));
+                },
+                delegate
+                {
+                    Invoke(new MethodInvoker(delegate
+                    {
+                        labelFingerLeft.Text = "Left fingerprint scan failed";
+                        labelFingerLeft.ForeColor = Color.DarkGray;
+                    }));
+                });
+        }
+
+        private void ButtonScanBioRight_Click(object sender, EventArgs e)
+        {
+            rightId = -1;
+            int id = PartialDB.GetNextRightFingerprintId();
+            labelFingerRight.Text = "Right fingerprint waiting to scan";
+            labelFingerRight.ForeColor = Color.DarkGray;
+            Biometric.Set(id,
+                delegate
+                {
+                    Invoke(new MethodInvoker(delegate
+                    {
+                        labelFingerRight.Text = "Right fingerprint waiting to confirm";
+                        labelFingerRight.ForeColor = Color.DarkGray;
+                    }));
+                },
+                delegate
+                {
+                    rightId = id;
+                    Invoke(new MethodInvoker(delegate
+                    {
+                        labelFingerRight.Text = "Right fingerprint scanned";
+                        labelFingerRight.ForeColor = Color.Green;
+                    }));
+                },
+                delegate
+                {
+                    Invoke(new MethodInvoker(delegate
+                    {
+                        labelFingerRight.Text = "Right fingerprint scan failed";
+                        labelFingerRight.ForeColor = Color.DarkGray;
+                    }));
+                });
+        }
+
         private void ButtonRegister_Click(object sender, EventArgs e)
         {
-            if (capturedImages.Count < 3)
+            if (string.IsNullOrEmpty(textboxName.Text))
             {
-                MessageBox.Show("Please take picture", "Incomplete Picture", MessageBoxButtons.OK);
+                MessageBox.Show("Please input name", "No Name", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (string.IsNullOrEmpty(textboxName.Text))
+            else if (string.IsNullOrEmpty(textboxContactNumber.Text))
             {
-                MessageBox.Show("Please input name", "No Name", MessageBoxButtons.OK);
+                MessageBox.Show("Please input contact number", "No Contact Number", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (!long.TryParse(textboxContactNumber.Text, out long contNum))
+            {
+                MessageBox.Show("Please input valid contact number", "Invalid Contact Number", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (comboBoxGender.SelectedIndex == 0)
+            {
+                MessageBox.Show("Please select gender", "No Name", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else if (comboBoxDestination.SelectedIndex == 0)
             {
-                MessageBox.Show("Please select destination", "No Destination", MessageBoxButtons.OK);
+                MessageBox.Show("Please select destination", "No Destination", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (capturedImages.Count < 3)
+            {
+                MessageBox.Show("Please take picture", "Incomplete Picture", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (leftId == -1)
+            {
+                MessageBox.Show("Please scan left fingerprint", "No Left Fingerprint", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (rightId == -1)
+            {
+                MessageBox.Show("Please scan right fingerprint", "No Right Fingerprint", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -115,8 +203,15 @@ namespace VMS.Forms
                 }
                 foreach (var img in capturedImages)
                 {
-                    ML.FaceRecognition.AddDataset(img, textboxName.Text);
+                    ML.FaceRecognition.AddDataset(img, nextId.ToString());
                 }
+                PartialDB.SetUser(new User(
+                    nextId,
+                    textboxName.Text,
+                    (string)comboBoxGender.SelectedItem,
+                    Convert.ToInt64(textboxContactNumber.Text),
+                    leftId,
+                    rightId));
                 MessageBox.Show("User registered successfully", "Registered", MessageBoxButtons.OK);
                 Close();
             }
@@ -128,6 +223,8 @@ namespace VMS.Forms
             StartCamera();
             buttonCapture.Text = "TAKE PICTURE";
             buttonCapture.Enabled = true;
+            labelIndicator.ForeColor = Color.DarkGray;
+            labelIndicator.Text = "Face straight to the camera (" + capturedImages.Count + "/3)";
         }
 
         private void ButtonBack_Click(object sender, EventArgs e)

@@ -1,0 +1,39 @@
+reg -1
+scan 0
+
+ERR error sa reading 
+wala na tarong ug capture or problem sa device
+
+REG already been registered print
+
+OK successfully registered
+
+
+-1 (Register Finger Print)	REG
+Enter ID#			ID
+Enrolling to id number		ID(#)
+Searching for finger		PUT FINGER 1
+1st FP image taken		SUCCESS 1
+Converted image			IMAGE SAVED
+Remove finger			REV FINGER
+Place same finger print		PUT FINGER 2
+Save image 2			SUCCESS 2
+Finger Filter verify		SUCCESS 3
+Created model #			MODEL #
+F1 and F2 is matched		PRINT MATCHED
+print did no matched		PRINT NOTMATCH
+print saved			IMG SAVED
+
+
+-2 (Scan Finger Print)			SCAN
+Found Match Finger Print		ID #
+Confidence level to the match FP	% = 
+
+
+finger print could be save in this loc	LOC ERR
+Image is messy				IMG ERR
+communication error			COM ERR
+finger print invalid image		FP ERR
+unknown error				ERR
+no flasher from the finger sensor	FLASH ERR
+		

@@ -19,19 +19,34 @@ namespace VMS.Forms
             InitializeComponent();
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            BiometricVerify();
+        }
+
+        private bool BiometricVerify()
+        {
+            if (string.IsNullOrEmpty(Biometric.Port))
+            {
+                new BiometricPortSelect().ShowDialog();
+            }
+            return !string.IsNullOrEmpty(Biometric.Port);
+        }
+
         private void ButtonNew_Click(object sender, EventArgs e)
         {
-            new NewVisitor().ShowDialog();
+            if (BiometricVerify()) new NewVisitor().ShowDialog();
         }
 
         private void ButtonOld_Click(object sender, EventArgs e)
         {
-            new OldVisitor().ShowDialog();
+            if (BiometricVerify()) new OldVisitor().ShowDialog();
         }
 
         private void ButtonAdmin_Click(object sender, EventArgs e)
         {
-            new Admin().ShowDialog();
+            if (BiometricVerify()) new Admin().ShowDialog();
         }
     }
 }

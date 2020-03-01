@@ -120,8 +120,6 @@ namespace VMS.Services
                 log?.Invoke("MLFaceRecognition: Done");
             }
 
-
-
             private static void FrameGrabber(object sender, EventArgs e)
             {
                 if (!Started) return;
