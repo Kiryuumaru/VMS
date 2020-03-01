@@ -39,6 +39,7 @@ namespace VMS.Forms
         protected override void OnClosing(CancelEventArgs e)
         {
             ML.FaceRecognition.Stop();
+            Biometric.Standby();
             base.OnClosing(e);
         }
 
