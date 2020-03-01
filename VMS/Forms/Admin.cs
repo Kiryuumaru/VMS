@@ -24,13 +24,13 @@ namespace VMS.Forms
         {
             if (string.IsNullOrEmpty(textboxPassword.Text))
             {
-                MessageBox.Show("Please enter password", "Invalid", MessageBoxButtons.OK);
+                MessageBox.Show("Please enter password", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 textboxPassword.Text = "";
                 textboxPassword.Select();
             }
             else if (!PartialDB.TryPassword(textboxPassword.Text))
             {
-                MessageBox.Show("Please enter correct password", "Invalid", MessageBoxButtons.OK);
+                MessageBox.Show("Please enter correct password", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 textboxPassword.Text = "";
                 textboxPassword.Select();
             }

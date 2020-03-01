@@ -77,13 +77,13 @@ namespace VMS.Forms
                         labelIndicator.Text = "Face straight to the camera (" + capturedImages.Count + "/3)";
                         ((Button)sender).Enabled = true;
                     }));
-                    MessageBox.Show("Face successfully detected", "Success", MessageBoxButtons.OK);
+                    MessageBox.Show("Face successfully detected", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     Invoke(new MethodInvoker(delegate
                     {
-                        ((Button)sender).Text = "TAKE PICTURE (FAILED)";
+                        MessageBox.Show("Face must be visible to camera", "Face Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         ((Button)sender).Enabled = true;
                     }));
                 }
@@ -92,6 +92,11 @@ namespace VMS.Forms
 
         private void ButtonScanBioLeft_Click(object sender, EventArgs e)
         {
+            if (rightId == -1)
+            {
+                labelFingerRight.Text = "Right fingerprint not scanned";
+                labelFingerRight.ForeColor = Color.DarkGray;
+            }
             leftId = -1;
             int id = PartialDB.GetNextLeftFingerprintId();
             labelFingerLeft.Text = "Left fingerprint waiting to scan";
@@ -101,7 +106,15 @@ namespace VMS.Forms
                 {
                     Invoke(new MethodInvoker(delegate
                     {
-                        labelFingerLeft.Text = "Left fingerprint waiting to confirm";
+                        labelFingerLeft.Text = "Remove left finger";
+                        labelFingerLeft.ForeColor = Color.DarkGray;
+                    }));
+                },
+                delegate
+                {
+                    Invoke(new MethodInvoker(delegate
+                    {
+                        labelFingerLeft.Text = "Place left finger again to confirm";
                         labelFingerLeft.ForeColor = Color.DarkGray;
                     }));
                 },
@@ -126,6 +139,11 @@ namespace VMS.Forms
 
         private void ButtonScanBioRight_Click(object sender, EventArgs e)
         {
+            if (leftId == -1)
+            {
+                labelFingerLeft.Text = "Left fingerprint not scanned";
+                labelFingerLeft.ForeColor = Color.DarkGray;
+            }
             rightId = -1;
             int id = PartialDB.GetNextRightFingerprintId();
             labelFingerRight.Text = "Right fingerprint waiting to scan";
@@ -135,7 +153,15 @@ namespace VMS.Forms
                 {
                     Invoke(new MethodInvoker(delegate
                     {
-                        labelFingerRight.Text = "Right fingerprint waiting to confirm";
+                        labelFingerRight.Text = "Remove right finger";
+                        labelFingerRight.ForeColor = Color.DarkGray;
+                    }));
+                },
+                delegate
+                {
+                    Invoke(new MethodInvoker(delegate
+                    {
+                        labelFingerRight.Text = "Place right finger again to confirm";
                         labelFingerRight.ForeColor = Color.DarkGray;
                     }));
                 },
@@ -212,7 +238,7 @@ namespace VMS.Forms
                     Convert.ToInt64(textboxContactNumber.Text),
                     leftId,
                     rightId));
-                MessageBox.Show("User registered successfully", "Registered", MessageBoxButtons.OK);
+                MessageBox.Show("User registered successfully", "Registered", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Close();
             }
         }
@@ -225,6 +251,12 @@ namespace VMS.Forms
             buttonCapture.Enabled = true;
             labelIndicator.ForeColor = Color.DarkGray;
             labelIndicator.Text = "Face straight to the camera (" + capturedImages.Count + "/3)";
+            leftId = -1;
+            rightId = -1;
+            labelFingerRight.Text = "Right fingerprint not scanned";
+            labelFingerRight.ForeColor = Color.DarkGray;
+            labelFingerLeft.Text = "Left fingerprint not scanned";
+            labelFingerLeft.ForeColor = Color.DarkGray;
         }
 
         private void ButtonBack_Click(object sender, EventArgs e)

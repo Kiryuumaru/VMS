@@ -42,12 +42,12 @@
             this.buttonScanBioLeft = new System.Windows.Forms.Button();
             this.comboBoxDestination = new System.Windows.Forms.ComboBox();
             this.comboBoxGender = new System.Windows.Forms.ComboBox();
-            this.textboxContactNumber = new VMS.Controls.WaterMarkTextBox();
-            this.textboxName = new VMS.Controls.WaterMarkTextBox();
             this.buttonCapture = new System.Windows.Forms.Button();
             this.buttonRegister = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonReset = new System.Windows.Forms.Button();
+            this.textboxContactNumber = new VMS.Controls.WaterMarkTextBox();
+            this.textboxName = new VMS.Controls.WaterMarkTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxFrameGrabber)).BeginInit();
             this.panel1.SuspendLayout();
@@ -70,7 +70,8 @@
             // 
             this.imageBoxFrameGrabber.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.imageBoxFrameGrabber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.imageBoxFrameGrabber.Location = new System.Drawing.Point(0, 35);
+            this.imageBoxFrameGrabber.FunctionalMode = Emgu.CV.UI.ImageBox.FunctionalModeOption.Minimum;
+            this.imageBoxFrameGrabber.Location = new System.Drawing.Point(-1, 34);
             this.imageBoxFrameGrabber.Name = "imageBoxFrameGrabber";
             this.imageBoxFrameGrabber.Size = new System.Drawing.Size(420, 340);
             this.imageBoxFrameGrabber.TabIndex = 12;
@@ -83,7 +84,7 @@
             this.labelIndicator.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.labelIndicator.Location = new System.Drawing.Point(0, 0);
             this.labelIndicator.Name = "labelIndicator";
-            this.labelIndicator.Size = new System.Drawing.Size(420, 35);
+            this.labelIndicator.Size = new System.Drawing.Size(418, 35);
             this.labelIndicator.TabIndex = 13;
             this.labelIndicator.Text = "Face straight to the camera";
             this.labelIndicator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -95,7 +96,7 @@
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(319, 35);
+            this.label2.Size = new System.Drawing.Size(317, 35);
             this.label2.TabIndex = 14;
             this.label2.Text = "Please fill the necessary information";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -103,6 +104,7 @@
             // panel1
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.imageBoxFrameGrabber);
             this.panel1.Controls.Add(this.labelIndicator);
             this.panel1.Location = new System.Drawing.Point(25, 159);
@@ -113,6 +115,7 @@
             // panel2
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.buttonScanBioRight);
             this.panel2.Controls.Add(this.labelFingerRight);
             this.panel2.Controls.Add(this.labelFingerLeft);
@@ -131,14 +134,14 @@
             // 
             this.buttonScanBioRight.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonScanBioRight.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.buttonScanBioRight.FlatAppearance.BorderColor = System.Drawing.Color.Goldenrod;
+            this.buttonScanBioRight.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.buttonScanBioRight.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ControlLight;
             this.buttonScanBioRight.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
             this.buttonScanBioRight.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.buttonScanBioRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonScanBioRight.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonScanBioRight.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.buttonScanBioRight.Location = new System.Drawing.Point(167, 337);
+            this.buttonScanBioRight.Location = new System.Drawing.Point(166, 336);
             this.buttonScanBioRight.Margin = new System.Windows.Forms.Padding(8);
             this.buttonScanBioRight.Name = "buttonScanBioRight";
             this.buttonScanBioRight.Size = new System.Drawing.Size(144, 30);
@@ -150,7 +153,7 @@
             // labelFingerRight
             // 
             this.labelFingerRight.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFingerRight.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.labelFingerRight.ForeColor = System.Drawing.Color.DarkGray;
             this.labelFingerRight.Location = new System.Drawing.Point(163, 170);
             this.labelFingerRight.Name = "labelFingerRight";
             this.labelFingerRight.Size = new System.Drawing.Size(148, 159);
@@ -173,14 +176,14 @@
             // 
             this.buttonScanBioLeft.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonScanBioLeft.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.buttonScanBioLeft.FlatAppearance.BorderColor = System.Drawing.Color.Goldenrod;
+            this.buttonScanBioLeft.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.buttonScanBioLeft.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ControlLight;
             this.buttonScanBioLeft.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
             this.buttonScanBioLeft.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.buttonScanBioLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonScanBioLeft.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonScanBioLeft.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.buttonScanBioLeft.Location = new System.Drawing.Point(8, 337);
+            this.buttonScanBioLeft.Location = new System.Drawing.Point(7, 336);
             this.buttonScanBioLeft.Margin = new System.Windows.Forms.Padding(8);
             this.buttonScanBioLeft.Name = "buttonScanBioLeft";
             this.buttonScanBioLeft.Size = new System.Drawing.Size(148, 30);
@@ -219,40 +222,18 @@
             this.comboBoxGender.Size = new System.Drawing.Size(82, 29);
             this.comboBoxGender.TabIndex = 16;
             // 
-            // textboxContactNumber
-            // 
-            this.textboxContactNumber.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.textboxContactNumber.Location = new System.Drawing.Point(8, 88);
-            this.textboxContactNumber.Margin = new System.Windows.Forms.Padding(8);
-            this.textboxContactNumber.Name = "textboxContactNumber";
-            this.textboxContactNumber.Size = new System.Drawing.Size(210, 29);
-            this.textboxContactNumber.TabIndex = 2;
-            this.textboxContactNumber.WaterMarkColor = System.Drawing.Color.Gray;
-            this.textboxContactNumber.WaterMarkText = "Contact number";
-            // 
-            // textboxName
-            // 
-            this.textboxName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.textboxName.Location = new System.Drawing.Point(8, 43);
-            this.textboxName.Margin = new System.Windows.Forms.Padding(8);
-            this.textboxName.Name = "textboxName";
-            this.textboxName.Size = new System.Drawing.Size(303, 29);
-            this.textboxName.TabIndex = 1;
-            this.textboxName.WaterMarkColor = System.Drawing.Color.Gray;
-            this.textboxName.WaterMarkText = "Name";
-            // 
             // buttonCapture
             // 
             this.buttonCapture.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonCapture.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.buttonCapture.FlatAppearance.BorderColor = System.Drawing.Color.Goldenrod;
+            this.buttonCapture.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDark;
             this.buttonCapture.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ControlLight;
             this.buttonCapture.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
             this.buttonCapture.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
             this.buttonCapture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCapture.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCapture.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.buttonCapture.Location = new System.Drawing.Point(246, 545);
+            this.buttonCapture.Location = new System.Drawing.Point(132, 545);
             this.buttonCapture.Margin = new System.Windows.Forms.Padding(8);
             this.buttonCapture.Name = "buttonCapture";
             this.buttonCapture.Size = new System.Drawing.Size(199, 30);
@@ -272,10 +253,10 @@
             this.buttonRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRegister.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRegister.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.buttonRegister.Location = new System.Drawing.Point(641, 545);
+            this.buttonRegister.Location = new System.Drawing.Point(618, 545);
             this.buttonRegister.Margin = new System.Windows.Forms.Padding(8);
             this.buttonRegister.Name = "buttonRegister";
-            this.buttonRegister.Size = new System.Drawing.Size(129, 30);
+            this.buttonRegister.Size = new System.Drawing.Size(144, 30);
             this.buttonRegister.TabIndex = 21;
             this.buttonRegister.Text = "REGISTER";
             this.buttonRegister.UseVisualStyleBackColor = false;
@@ -312,14 +293,36 @@
             this.buttonReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReset.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReset.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.buttonReset.Location = new System.Drawing.Point(25, 545);
+            this.buttonReset.Location = new System.Drawing.Point(459, 545);
             this.buttonReset.Margin = new System.Windows.Forms.Padding(8);
             this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(205, 30);
+            this.buttonReset.Size = new System.Drawing.Size(148, 30);
             this.buttonReset.TabIndex = 23;
             this.buttonReset.Text = "RESET";
             this.buttonReset.UseVisualStyleBackColor = false;
             this.buttonReset.Click += new System.EventHandler(this.ButtonReset_Click);
+            // 
+            // textboxContactNumber
+            // 
+            this.textboxContactNumber.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.textboxContactNumber.Location = new System.Drawing.Point(8, 88);
+            this.textboxContactNumber.Margin = new System.Windows.Forms.Padding(8);
+            this.textboxContactNumber.Name = "textboxContactNumber";
+            this.textboxContactNumber.Size = new System.Drawing.Size(210, 29);
+            this.textboxContactNumber.TabIndex = 2;
+            this.textboxContactNumber.WaterMarkColor = System.Drawing.Color.Gray;
+            this.textboxContactNumber.WaterMarkText = "Contact number";
+            // 
+            // textboxName
+            // 
+            this.textboxName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.textboxName.Location = new System.Drawing.Point(8, 43);
+            this.textboxName.Margin = new System.Windows.Forms.Padding(8);
+            this.textboxName.Name = "textboxName";
+            this.textboxName.Size = new System.Drawing.Size(303, 29);
+            this.textboxName.TabIndex = 1;
+            this.textboxName.WaterMarkColor = System.Drawing.Color.Gray;
+            this.textboxName.WaterMarkText = "Name";
             // 
             // NewVisitor
             // 

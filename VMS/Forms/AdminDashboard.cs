@@ -40,7 +40,7 @@ namespace VMS.Forms
                 int selectedrowindex = dataGridView.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = dataGridView.Rows[selectedrowindex];
                 string name = Convert.ToString(selectedRow.Cells[0].Value);
-                if (MessageBox.Show("Are you sure to remove destination \"" + name + "\"?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure to remove destination \"" + name + "\"?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     PartialDB.DeleteDestination(name);
                     dataGridView.Rows.Clear();

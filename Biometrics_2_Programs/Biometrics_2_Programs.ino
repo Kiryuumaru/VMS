@@ -5,7 +5,7 @@ SoftwareSerial mySerial(2, 3);
 Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
 
 int id = 0;
-int lastId = 0;
+boolean newIn = false;
 boolean finger1 = false;
 boolean finger2 = false;
 
@@ -29,6 +29,8 @@ void getFingerprintEnroll() {
     Serial.println("OK1");
     finger1 = true;
     while (finger.getImage() != FINGERPRINT_NOFINGER);
+    Serial.println("OK2");
+    delay(1000);
   }
   
   if (!finger2){
@@ -54,7 +56,7 @@ void getFingerprintEnroll() {
       finger2 = false;
       return;
     }
-    Serial.println("OK2");
+    Serial.println("OK3");
     finger2 = true;
   }
 
@@ -88,7 +90,10 @@ void setup()
 
 void loop() 
 {
-  if (Serial.available()) id = getInt();
+  if (Serial.available()){
+    newIn = true;
+    id = getInt();
+  }
 
   switch (id)
   {
@@ -103,12 +108,12 @@ void loop()
       id = 0;
       break;
     default:
-      if (lastId != id){
-        lastId = id;
+      if (newIn){
         finger1 = false;
         finger2 = false;
       }
       getFingerprintEnroll();
       break;
   }
+  newIn = false;
 }

@@ -14,6 +14,7 @@ namespace VMS.Services
         private static Action<string> onGet;
         private static Action onSetFinger1;
         private static Action onSetFinger2;
+        private static Action onSetFinger3;
         private static Action onSetError;
         public static string Port { get; private set; } = "";
         public static bool Connected { get; private set; } = false;
@@ -32,6 +33,9 @@ namespace VMS.Services
                         break;
                     case "OK2\r\n":
                         onSetFinger2?.Invoke();
+                        break;
+                    case "OK3\r\n":
+                        onSetFinger3?.Invoke();
                         break;
                     case "ERR\r\n":
                         onSetError?.Invoke();
@@ -52,12 +56,13 @@ namespace VMS.Services
             };
         }
 
-        public static void Set(int id, Action onFinger1, Action onFinger2, Action onError)
+        public static void Set(int id, Action onFinger1, Action onFinger2, Action onFinger3, Action onError)
         {
             try
             {
                 onSetFinger1 = onFinger1;
                 onSetFinger2 = onFinger2;
+                onSetFinger3 = onFinger3;
                 onSetError = onError;
                 sp.SendMessage(Encoding.Default.GetBytes(id.ToString()));
             }

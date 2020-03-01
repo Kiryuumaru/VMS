@@ -63,9 +63,9 @@ namespace VMS.Forms
                     {
                         labelGreetings.Text = "Welcome," + Environment.NewLine + user.Name + "!";
                         userName = user.Name;
-                        StartBiometric();
                     }));
                 }
+                StartBiometric();
             });
         }
 
@@ -73,11 +73,11 @@ namespace VMS.Forms
         {
             if (string.IsNullOrEmpty(userName))
             {
-                MessageBox.Show("No recognized user", "Invalid", MessageBoxButtons.OK);
+                MessageBox.Show("No recognized user", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else if (comboBoxDestination.SelectedIndex == 0)
             {
-                MessageBox.Show("Please select destination", "No Destination", MessageBoxButtons.OK);
+                MessageBox.Show("Please select destination", "No Destination", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -88,7 +88,7 @@ namespace VMS.Forms
                     destination.VisitCount++;
                     PartialDB.SetDestination(destination);
                 }
-                MessageBox.Show("Successfully logged in", "Success", MessageBoxButtons.OK);
+                MessageBox.Show("Successfully logged in", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Close();
             }
         }

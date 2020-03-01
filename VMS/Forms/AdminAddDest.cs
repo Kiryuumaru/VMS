@@ -23,7 +23,7 @@ namespace VMS.Forms
         {
             if (string.IsNullOrEmpty(textboxName.Text))
             {
-                MessageBox.Show("Please input name", "Invalid", MessageBoxButtons.OK);
+                MessageBox.Show("Please input name", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             else
@@ -32,13 +32,13 @@ namespace VMS.Forms
                 Destination oldDestination = destinations.FirstOrDefault(item => item.Name.Equals(textboxName.Text));
                 if (oldDestination != null)
                 {
-                    MessageBox.Show("Destination name already added", "Invalid", MessageBoxButtons.OK);
+                    MessageBox.Show("Destination name already added", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
                     Destination destination = new Destination(textboxName.Text);
                     PartialDB.SetDestination(destination);
-                    MessageBox.Show("Destination successfully added", "Success", MessageBoxButtons.OK);
+                    MessageBox.Show("Destination successfully added", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
             }
