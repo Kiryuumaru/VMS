@@ -1,0 +1,11 @@
+SEND
+-1		Scan fingerprint
+-2		flash database
+<any nonzero>	register a fingerprint with id
+
+RECEIVE
+OK		Operation success
+OK1		Fingerprint scanned
+OK2		Finger lifted
+OK3		Confirm fingerprint scanned
+ERR		Operation error

@@ -1,3 +1,0 @@
--1		Scan fingerprint
--2		flash database
-<any nonzero>	register a fingerprint with id
