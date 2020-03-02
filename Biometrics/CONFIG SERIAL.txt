@@ -9,3 +9,5 @@ OK1		Fingerprint scanned
 OK2		Finger lifted
 OK3		Confirm fingerprint scanned
 ERR		Operation error
+
+SERIAL(2, 3)

@@ -185,5 +185,12 @@ namespace VMS.Services
                 File.WriteAllText(Extension.Users, blob);
             }
         }
+
+        public static void ClearData()
+        {
+            File.WriteAllText(Extension.Destinations, "");
+            File.WriteAllText(Extension.Users, "");
+            Biometric.Flash();
+        }
     }
 }

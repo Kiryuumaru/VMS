@@ -52,6 +52,19 @@ namespace VMS.Forms
             }
         }
 
+        private void ButtonClearData_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure to clear data?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                PartialDB.ClearData();
+                dataGridView.Rows.Clear();
+                foreach (Destination destination in PartialDB.GetDestinations())
+                {
+                    dataGridView.Rows.Add(destination.Name, destination.VisitCount.ToString());
+                }
+            }
+        }
+
         private void ButtonClose_Click(object sender, EventArgs e)
         {
             Close();
