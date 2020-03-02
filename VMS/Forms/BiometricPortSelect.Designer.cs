@@ -73,6 +73,7 @@
             this.ClientSize = new System.Drawing.Size(325, 114);
             this.Controls.Add(this.comboBoxPort);
             this.Controls.Add(this.buttonAdd);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "BiometricPortSelect";
