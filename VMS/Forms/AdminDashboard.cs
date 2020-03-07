@@ -65,6 +65,11 @@ namespace VMS.Forms
             }
         }
 
+        private void ButtonViewHist_Click(object sender, EventArgs e)
+        {
+            new AdminHistory().ShowDialog();
+        }
+
         private void ButtonClose_Click(object sender, EventArgs e)
         {
             Close();

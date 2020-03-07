@@ -45,9 +45,16 @@ namespace VMS.Forms
 
         private void StartCamera()
         {
-            if (ML.FaceRecognition.Started) return;
-            ML.FaceRecognition.Init();
-            ML.FaceRecognition.Start(imageBoxFrameGrabber);
+            try
+            {
+                if (ML.FaceRecognition.Started) return;
+                ML.FaceRecognition.Init();
+                ML.FaceRecognition.Start(imageBoxFrameGrabber);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Something went wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ButtonCapture_Click(object sender, EventArgs e)
@@ -227,6 +234,7 @@ namespace VMS.Forms
                 {
                     destination.VisitCount++;
                     PartialDB.SetDestination(destination);
+                    PartialDB.AddHistory(new History(textboxName.Text, destination.Name, DateTime.Now));
                 }
                 foreach (var img in capturedImages)
                 {

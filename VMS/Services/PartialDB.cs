@@ -17,6 +17,18 @@ namespace VMS.Services
             VisitCount = visitCount;
         }
     }
+    public class History
+    {
+        public string UserName { get; private set; }
+        public string Destination { get; private set; }
+        public DateTime DateTime { get; private set; }
+        public History(string userName, string destination, DateTime dateTime)
+        {
+            UserName = userName;
+            Destination = destination;
+            DateTime = dateTime;
+        }
+    }
 
     public class User
     {
@@ -100,6 +112,40 @@ namespace VMS.Services
                 }
                 File.WriteAllText(Extension.Destinations, blob);
             }
+        }
+
+        public static History[] GetHistory()
+        {
+            if (!Directory.Exists(Extension.AssetsDir)) Directory.CreateDirectory(Extension.AssetsDir);
+            if (!File.Exists(Extension.History)) File.WriteAllText(Extension.History, "");
+            string[] historyInfos = File.ReadAllLines(Extension.History);
+            List<History> hist = new List<History>();
+            foreach (string info in historyInfos)
+            {
+                string name = Extension.Helpers.GetValue(info, "name");
+                string dest = Extension.Helpers.GetValue(info, "dest");
+                DateTime time = Extension.Helpers.DecodeDateTime(Extension.Helpers.GetValue(info, "time"));
+                hist.Add(new History(name, dest, time));
+            }
+            return hist.ToArray();
+        }
+
+        public static void AddHistory(History history)
+        {
+            if (!Directory.Exists(Extension.AssetsDir)) Directory.CreateDirectory(Extension.AssetsDir);
+            if (!File.Exists(Extension.History)) File.WriteAllText(Extension.History, "");
+            List<string> historyInfos = new List<string>(File.ReadAllLines(Extension.History));
+            string blob = "";
+            blob = Extension.Helpers.SetValue(blob, "name", history.UserName);
+            blob = Extension.Helpers.SetValue(blob, "dest", history.Destination);
+            blob = Extension.Helpers.SetValue(blob, "time", Extension.Helpers.EncodeDateTime(history.DateTime));
+            historyInfos.Insert(0, blob);
+            File.WriteAllLines(Extension.History, historyInfos);
+        }
+
+        public static void ClearHistory()
+        {
+            File.WriteAllText(Extension.History, "");
         }
 
         public static User[] GetUsers()
@@ -190,6 +236,7 @@ namespace VMS.Services
         {
             File.WriteAllText(Extension.Destinations, "");
             File.WriteAllText(Extension.Users, "");
+            File.WriteAllText(Extension.History, "");
             Biometric.Flash();
         }
     }

@@ -41,6 +41,7 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonRemove = new System.Windows.Forms.Button();
             this.buttonClearData = new System.Windows.Forms.Button();
+            this.buttonViewHist = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -218,6 +219,26 @@
             this.buttonClearData.UseVisualStyleBackColor = false;
             this.buttonClearData.Click += new System.EventHandler(this.ButtonClearData_Click);
             // 
+            // buttonViewHist
+            // 
+            this.buttonViewHist.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonViewHist.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.buttonViewHist.FlatAppearance.BorderColor = System.Drawing.Color.Goldenrod;
+            this.buttonViewHist.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.ControlLight;
+            this.buttonViewHist.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttonViewHist.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.buttonViewHist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonViewHist.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonViewHist.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.buttonViewHist.Location = new System.Drawing.Point(625, 297);
+            this.buttonViewHist.Margin = new System.Windows.Forms.Padding(8);
+            this.buttonViewHist.Name = "buttonViewHist";
+            this.buttonViewHist.Size = new System.Drawing.Size(163, 30);
+            this.buttonViewHist.TabIndex = 20;
+            this.buttonViewHist.Text = "VIEW HISTORY";
+            this.buttonViewHist.UseVisualStyleBackColor = false;
+            this.buttonViewHist.Click += new System.EventHandler(this.ButtonViewHist_Click);
+            // 
             // AdminDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,6 +246,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.ControlBox = false;
+            this.Controls.Add(this.buttonViewHist);
             this.Controls.Add(this.buttonClearData);
             this.Controls.Add(this.buttonRemove);
             this.Controls.Add(this.dataGridView);
@@ -261,5 +283,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.Button buttonRemove;
         private System.Windows.Forms.Button buttonClearData;
+        private System.Windows.Forms.Button buttonViewHist;
     }
 }

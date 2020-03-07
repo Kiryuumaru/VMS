@@ -47,6 +47,8 @@ namespace VMS.Forms
         private void ButtonAdmin_Click(object sender, EventArgs e)
         {
             if (BiometricVerify()) new Admin().ShowDialog();
+            //PartialDB.AddHistory(new History("Clynt daw", "LRC", DateTime.Now));
+            //new Admin().ShowDialog();
         }
     }
 }
