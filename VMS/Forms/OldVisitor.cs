@@ -15,6 +15,7 @@ namespace VMS.Forms
     public partial class OldVisitor : Form
     {
         private string userName = "";
+        private string userNameOverride = "";
         private readonly User[] users = PartialDB.GetUsers();
 
         public OldVisitor()
@@ -32,8 +33,20 @@ namespace VMS.Forms
                 User user = users.FirstOrDefault(item => item.Id.Equals(label));
                 if (user != null)
                 {
-                    labelGreetings.Text = "Welcome," + Environment.NewLine + user.Name + "!";
-                    userName = user.Name;
+                    Invoke(new MethodInvoker(delegate
+                    {
+                        if (string.IsNullOrEmpty(userName))
+                        {
+                            labelGreetings.Text = "Welcome," + Environment.NewLine + user.Name + "!";
+                            userName = user.Name;
+                        }
+                        else
+                        {
+                            labelOverride.Text = "New user detected: " + user.Name;
+                            userNameOverride = user.Name;
+                            panelOverride.Visible = true;
+                        }
+                    }));
                 }
             };
             ML.FaceRecognition.ShowLabel = false;
@@ -67,11 +80,17 @@ namespace VMS.Forms
                 User user = users.FirstOrDefault(item => item.HasFingerId(Convert.ToInt32(id)));
                 if (user != null)
                 {
-                    Invoke(new MethodInvoker(delegate
+                    if (string.IsNullOrEmpty(userName))
                     {
                         labelGreetings.Text = "Welcome," + Environment.NewLine + user.Name + "!";
                         userName = user.Name;
-                    }));
+                    }
+                    else
+                    {
+                        labelOverride.Text = "New user detected: " + user.Name;
+                        userNameOverride = user.Name;
+                        panelOverride.Visible = true;
+                    }
                 }
                 StartBiometric();
             });
@@ -100,6 +119,16 @@ namespace VMS.Forms
                 MessageBox.Show("Successfully logged in", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Close();
             }
+        }
+
+        private void ButtonOverride_Click(object sender, EventArgs e)
+        {
+            Invoke(new MethodInvoker(delegate
+            {
+                labelGreetings.Text = "Welcome," + Environment.NewLine + userNameOverride + "!";
+                userName = userNameOverride;
+                panelOverride.Visible = false;
+            }));
         }
 
         private void ButtonBack_Click(object sender, EventArgs e)
