@@ -35,7 +35,7 @@ namespace VMS.Forms
                 {
                     Invoke(new MethodInvoker(delegate
                     {
-                        if (string.IsNullOrEmpty(userName))
+                        if (userName.Equals(user.Name) || string.IsNullOrEmpty(userName))
                         {
                             labelGreetings.Text = "Welcome," + Environment.NewLine + user.Name + "!";
                             userName = user.Name;
@@ -80,7 +80,7 @@ namespace VMS.Forms
                 User user = users.FirstOrDefault(item => item.HasFingerId(Convert.ToInt32(id)));
                 if (user != null)
                 {
-                    if (string.IsNullOrEmpty(userName))
+                    if (userName.Equals(user.Name) || string.IsNullOrEmpty(userName))
                     {
                         labelGreetings.Text = "Welcome," + Environment.NewLine + user.Name + "!";
                         userName = user.Name;

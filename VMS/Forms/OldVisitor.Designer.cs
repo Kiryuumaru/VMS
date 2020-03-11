@@ -35,21 +35,21 @@
             this.imageBoxFrameGrabber = new Emgu.CV.UI.ImageBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.labelGreetings = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.comboBoxDestination = new System.Windows.Forms.ComboBox();
             this.buttonLogin = new System.Windows.Forms.Button();
-            this.labelGreetings = new System.Windows.Forms.Label();
             this.panelOverride = new System.Windows.Forms.Panel();
             this.labelOverride = new System.Windows.Forms.Label();
             this.buttonOverride = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonBack = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxFrameGrabber)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panelOverride.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panelOverride.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -101,13 +101,35 @@
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel2.Controls.Add(this.labelGreetings);
-            this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.panelOverride);
+            this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Location = new System.Drawing.Point(452, 194);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(319, 340);
             this.panel2.TabIndex = 18;
+            // 
+            // labelGreetings
+            // 
+            this.labelGreetings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelGreetings.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGreetings.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.labelGreetings.Location = new System.Drawing.Point(0, 77);
+            this.labelGreetings.Name = "labelGreetings";
+            this.labelGreetings.Size = new System.Drawing.Size(319, 93);
+            this.labelGreetings.TabIndex = 18;
+            this.labelGreetings.Text = "Welcome";
+            this.labelGreetings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.comboBoxDestination);
+            this.panel3.Controls.Add(this.buttonLogin);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 246);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(319, 94);
+            this.panel3.TabIndex = 24;
             // 
             // comboBoxDestination
             // 
@@ -143,29 +165,17 @@
             this.buttonLogin.UseVisualStyleBackColor = false;
             this.buttonLogin.Click += new System.EventHandler(this.ButtonLogin_Click);
             // 
-            // labelGreetings
-            // 
-            this.labelGreetings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelGreetings.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGreetings.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.labelGreetings.Location = new System.Drawing.Point(0, 147);
-            this.labelGreetings.Name = "labelGreetings";
-            this.labelGreetings.Size = new System.Drawing.Size(319, 99);
-            this.labelGreetings.TabIndex = 18;
-            this.labelGreetings.Text = "Welcome";
-            this.labelGreetings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // panelOverride
             // 
             this.panelOverride.AutoSize = true;
             this.panelOverride.Controls.Add(this.labelOverride);
             this.panelOverride.Controls.Add(this.buttonOverride);
-            this.panelOverride.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelOverride.Location = new System.Drawing.Point(0, 77);
+            this.panelOverride.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelOverride.Location = new System.Drawing.Point(0, 170);
             this.panelOverride.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.panelOverride.Name = "panelOverride";
-            this.panelOverride.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.panelOverride.Size = new System.Drawing.Size(319, 70);
+            this.panelOverride.Padding = new System.Windows.Forms.Padding(8);
+            this.panelOverride.Size = new System.Drawing.Size(319, 76);
             this.panelOverride.TabIndex = 23;
             this.panelOverride.Visible = false;
             // 
@@ -174,10 +184,10 @@
             this.labelOverride.Dock = System.Windows.Forms.DockStyle.Top;
             this.labelOverride.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelOverride.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelOverride.Location = new System.Drawing.Point(0, 10);
+            this.labelOverride.Location = new System.Drawing.Point(8, 8);
             this.labelOverride.Name = "labelOverride";
             this.labelOverride.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelOverride.Size = new System.Drawing.Size(319, 30);
+            this.labelOverride.Size = new System.Drawing.Size(303, 30);
             this.labelOverride.TabIndex = 15;
             this.labelOverride.Text = "New user detected: name";
             this.labelOverride.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -193,10 +203,10 @@
             this.buttonOverride.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOverride.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOverride.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.buttonOverride.Location = new System.Drawing.Point(0, 40);
+            this.buttonOverride.Location = new System.Drawing.Point(8, 38);
             this.buttonOverride.Margin = new System.Windows.Forms.Padding(8);
             this.buttonOverride.Name = "buttonOverride";
-            this.buttonOverride.Size = new System.Drawing.Size(319, 30);
+            this.buttonOverride.Size = new System.Drawing.Size(303, 30);
             this.buttonOverride.TabIndex = 23;
             this.buttonOverride.Text = "OVERRIDE USER";
             this.buttonOverride.UseVisualStyleBackColor = false;
@@ -236,16 +246,6 @@
             this.buttonBack.UseVisualStyleBackColor = false;
             this.buttonBack.Click += new System.EventHandler(this.ButtonBack_Click);
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.comboBoxDestination);
-            this.panel3.Controls.Add(this.buttonLogin);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 246);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(319, 94);
-            this.panel3.TabIndex = 24;
-            // 
             // OldVisitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,8 +269,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxFrameGrabber)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panelOverride.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panelOverride.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
