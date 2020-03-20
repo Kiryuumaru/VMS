@@ -10,22 +10,31 @@ namespace VMS.Services
 {
     public static class Biometric
     {
+        // Serial input port for biometric
         private static SerialPortInput sp;
+
         private static Action<string> onGet;
+        // Event handler for finger set success and error
         private static Action onSetFinger1;
         private static Action onSetFinger2;
         private static Action onSetFinger3;
         private static Action onSetError;
+
         public static string Port { get; private set; } = "";
         public static bool Connected { get; private set; } = false;
 
+        // Initialize biometric on serial port
         public static void Init(string port)
         {
             sp = new SerialPortInput();
+            // Serial connection event handler
             sp.ConnectionStatusChanged += (s, e) => Connected = e.Connected;
+            // Serial message event handler
             sp.MessageReceived += (s, e) =>
             {
+                // Decode message
                 string msg = Encoding.Default.GetString(e.Data);
+                // Classify each message for each event handlers
                 switch (msg)
                 {
                     case "OK1\r\n":
@@ -47,15 +56,20 @@ namespace VMS.Services
                 Console.WriteLine("Received message: " +  msg);
             };
             Port = port;
+            // Initialize port with 9600 baud rate
             sp.SetPort(port, 9600);
+            // Start serial communication
             sp.Connect();
+            // Set biometric on standby state
             Standby();
+            // Disconnect biometric on application exit
             Application.ApplicationExit += delegate
             {
                 sp.Disconnect();
             };
         }
 
+        // Finger save method
         public static void Set(int id, Action onFinger1, Action onFinger2, Action onFinger3, Action onError)
         {
             try
@@ -72,17 +86,20 @@ namespace VMS.Services
             }
         }
 
+        // Finger classify method
         public static void Get(Action<string> onIdentify)
         {
             onGet = onIdentify;
             sp.SendMessage(Encoding.Default.GetBytes("-1"));
         }
 
+        // Biometric standby method
         public static void Standby()
         {
             sp.SendMessage(Encoding.Default.GetBytes("0"));
         }
 
+        // Clear biometric data
         public static void Flash()
         {
             sp.SendMessage(Encoding.Default.GetBytes("-2"));

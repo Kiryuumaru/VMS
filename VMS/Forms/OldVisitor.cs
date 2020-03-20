@@ -39,6 +39,7 @@ namespace VMS.Forms
                         {
                             labelGreetings.Text = "Welcome," + Environment.NewLine + user.Name + "!";
                             userName = user.Name;
+                            panelOverride.Visible = false;
                         }
                         else
                         {
@@ -84,6 +85,7 @@ namespace VMS.Forms
                     {
                         labelGreetings.Text = "Welcome," + Environment.NewLine + user.Name + "!";
                         userName = user.Name;
+                        panelOverride.Visible = false;
                     }
                     else
                     {
